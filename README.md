@@ -121,7 +121,6 @@ sudo -u postgres pgbackrest --stanza=main \
 crontab -e 
 
 add the following 
-# m h  dom mon dow   command
 30 06  *   *   0     pgbackrest --type=full --stanza=main backup
 30 06  *   *   1-6   pgbackrest --type=diff --stanza=main backup
 
