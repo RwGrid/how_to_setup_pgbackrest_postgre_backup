@@ -116,7 +116,7 @@ the password of postgres is defined  in third step
 sudo -u postgres pgbackrest --stanza=main \
        --log-level-console=info backup
 
-Cron job :
+<h2>Cron job :</h2>
 
 crontab -e 
 
@@ -133,7 +133,7 @@ Get backup information about backups that are done using pback_rest
 
 sudo -u postgres pgbackrest info
 
-TO configure pgadmin with this :
+<h2>TO configure pgadmin with this: </h2>
 
 step1 : Must first allow hosts to access postgres from other ips such as container of pgadmin
 
