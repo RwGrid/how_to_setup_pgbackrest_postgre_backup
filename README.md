@@ -150,3 +150,9 @@ step 3 :
 
 additional might use :
 to go to postgres user in command line :   use this ---> sudo -i -u postgres
+
+
+<h2>to use terminal base pg_dump</h2>
+must use terminal and not in psql 
+then follow this tutorial
+https://www.youtube.com/watch?v=nbnRibO5Qmo
