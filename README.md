@@ -75,21 +75,26 @@ If you're not getting any output when you run the `sudo systemctl status postgre
    ```
 --------note--------- Pgbackrest Perform backups on a cluster and not a singular database ---
 Fifth: FOLLOW THIS Tutorial to the letter https://pgbackrest.org/user-guide.html
+
 this is the conf file in /etc/pgbackrest/pgbackrest.conf
+
 step: modify settings in postgres to allow WAL configration :
 
 sudo nano /etc/postgresql/15/main/postgresql.conf 
 
 must add these : 
+
 archive_command = 'pgbackrest --stanza=main archive-push %p'
 archive_mode = on
 max_wal_senders = 3
 wal_level = replica
 
 then i must restart cluster 
+
 sudo pg_ctlcluster 15 main  restart
 
 step: create conf file of pgbackrest
+---------------------------------------------------------
 [global]
 repo1-path=/var/lib/pgbackrest
 log-level-console=info
@@ -106,13 +111,16 @@ repo1-retention-diff=35 # Keep differential backups for 35 days (adjust as neede
 start-fast=y
 [global:archive-push]
 compress-level=3
-
+-----------------------------------------------------
 
 If u notice here , iam using postgres user to perform the stanza 
+
 the password of postgres is defined  in third step
+
 766  sudo -u postgres pgbackrest --stanza=main --log-level-console=info stanza-create
   
 767  sudo -u postgres pgbackrest --stanza=main --log-level-console=info check
+
 sudo -u postgres pgbackrest --stanza=main \
        --log-level-console=info backup
 
