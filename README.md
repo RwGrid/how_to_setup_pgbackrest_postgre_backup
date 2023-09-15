@@ -160,6 +160,17 @@ additional might use :
 to go to postgres user in command line :   use this ---> sudo -i -u postgres
 <h3>Restoring from pgbackrest</h3>
 https://pgbackrest.org/user-guide.html
+
+
+sudo -u postgres find /var/lib/postgresql/15/main  -mindepth 1 -delete
+
+sudo -u postgres pgbackrest --stanza=main  restore
+
+sudo pg_ctlcluster 15 main  start
+
+
+restoring whole cluster :
+
 <h2>to use terminal base pg_dump</h2>
 must use terminal and not in psql 
 then follow this tutorial
