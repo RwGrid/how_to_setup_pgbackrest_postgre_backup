@@ -148,3 +148,5 @@ step 3 :
  restart container
  sudo service postgresql restart
 
+additional might use :
+to go to postgres user in command line :   use this ---> sudo -i -u postgres
