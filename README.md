@@ -132,3 +132,20 @@ backups are scheduled for 6:30 AM every Sunday with differential backups schedul
 Get backup information about backups that are done using pback_rest
 
 sudo -u postgres pgbackrest info
+
+TO configure pgadmin with this :
+
+step1 : Must first allow hosts to access postgres from other ips such as container of pgadmin
+
+cd etc/postgresql/15/main
+nano postgresql.conf 
+change listen_address=localhost to  ---->listen_addresses = '*' 
+
+step 2:
+ sudo nano /etc/postgresql/15/main/pg_hba.conf
+ add this to end of file
+ host    all             all             0.0.0.0/0               md5
+step 3 :
+ restart container
+ sudo service postgresql restart
+
