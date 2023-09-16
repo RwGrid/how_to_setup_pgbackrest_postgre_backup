@@ -125,7 +125,32 @@ sudo -u postgres pgbackrest --stanza=main \
        --log-level-console=info backup
 
 <h2>Cron job :</h2>
+Chane to user postgres , then access crontab of user postgres 
+Yes, if you want to schedule a cron job that runs as the `postgres` user, you can certainly add the job to the `postgres` user's crontab. Here's how you can do that:
 
+1. Switch to the `postgres` user:
+
+   ```shell
+   sudo -i -u postgres
+   ```
+
+2. Edit the `postgres` user's crontab:
+
+   ```shell
+   crontab -e
+   ```
+
+3. Add your `pgbackrest` cron job to the `postgres` user's crontab:
+
+   ```shell
+   * * * * * pgbackrest --type=diff --stanza=main backup
+   ```
+
+   This will schedule the `pgbackrest` command to run as the `postgres` user at the specified schedule (in this example, every minute).
+
+4. Save the crontab and exit the editor.
+
+Now, the `pgbackrest` command will be executed as the `postgres` user according to the schedule you've specified in the `postgres` user's crontab. This approach is straightforward and doesn't require using `sudo` or modifying the `ali` user's crontab.
 crontab -e 
 
 add the following 
